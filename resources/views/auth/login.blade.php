@@ -12,7 +12,7 @@
                 <!-- login form -->
                 <div class="card p-5">
 
-                    <form action="{{ route('login') }}" method="post">
+                    <form action="{{ route('login.store') }}" method="post">
                         @csrf
                         <div class="mb-3">
                             <label for="email">Email</label>
@@ -35,7 +35,7 @@
                         </div>
 
                         <div class="d-flex justify-content-between align-items-center">
-                            <a href="#">Esqueceu a sua senha?</a>
+                            <a href="{{ route('password.request') }}">Esqueceu a sua senha?</a>
                             <button type="submit" class="btn btn-primary px-4">Entrar</button>
                         </div>
 
