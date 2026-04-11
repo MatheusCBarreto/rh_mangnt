@@ -41,6 +41,13 @@
 
                     </form>
 
+                    @if (session('status'))
+                        <div class="alert alert-success mt-3 text-center">
+                            {{ session('status') }}
+                        </div>
+                    @endif
+
+
                 </div>
 
             </div>
