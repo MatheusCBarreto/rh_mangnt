@@ -1,5 +1,7 @@
 <x-layout-app page-title="Home">
-    @can('admin')
-        <h3 class="text-center mt-5">É o usuário admin que está logado!</h3>
-    @endcan
+    <div class="w-100 p-4">
+        <h3>Home</h3>
+        <hr>
+
+    </div>
 </x-layout-app>

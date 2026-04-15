@@ -3,14 +3,14 @@
     <a href="{{ route('home') }}"><i class="fas fa-home me-3"></i>Home</a>
 
     @can('admin')
-        <a href="#" class=""><i class="fas fa-users me-3"></i>Colaborators</a>
-        <a href="#" class=""><i class="fa-solid fa-user-gear me-3"></i>RH Colaborators</a>
-        <a href="#" class=""><i class="fa-solid fa-industry me-3"></i>Departments</a>
+        <a href="#"><i class="fas fa-users me-3"></i>Colaborators</a>
+        <a href="#"><i class="fa-solid fa-user-gear me-3"></i>RH Colaborators</a>
+        <a href="#"><i class="fa-solid fa-industry me-3"></i>Departments</a>
     @endcan
 
     <hr>
 
-    <a href="#" class=""><i class="fas fa-cog me-3"></i>User profile</a>
+    <a href="{{ route('user.profile') }}"><i class="fas fa-cog me-3"></i>User profile</a>
 
     <hr>
 
