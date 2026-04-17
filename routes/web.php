@@ -16,4 +16,6 @@ Route::middleware('auth')->group(function () {
 
     // departments routes
     Route::get('/departments', [DepartmentController::class, 'index'])->name('departments');
+    Route::get('/departments/new-department', [DepartmentController::class, 'newDepartment'])->name('departments.new-department');
+    Route::post('/departments/create-department', [DepartmentController::class, 'createDepartment'])->name('departments.create-department');
 });
