@@ -34,7 +34,7 @@
                             <div class="d-flex">
                                 <div class="flex-grow-1 pe-3">
                                     <label for="select_department" class="form-label">Department</label>
-                                    <select name="department" id="department" class="form-select">
+                                    <select name="select_department" id="select_department" class="form-select">
                                         @foreach ($departments as $department)
                                             <option value="{{ $department->id }}">{{ $department->name }}</option>
                                         @endforeach

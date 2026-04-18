@@ -30,21 +30,20 @@
                         <tr>
                             <td>{{ $colaborator->name }}</td>
                             <td>{{ $colaborator->email }}</td>
+
+                            @php
+                                $permissions = json_decode($colaborator->permissions);
+                            @endphp
+
+                            <td>{{ implode(',', $permissions) }}</td>
+
                             <td>
-
-                                @php
-                                    $permissions = json_decode($colaborators->permissions);
-                                @endphp
-
-                            <td>{{ implode($permissions, ',') }}</td>
-
-                            <div class="d-flex gap-3 justify-content-end">
-
-                                <a href="#" class="btn btn-sm btn-outline-dark"><i
-                                        class="fa-regular fa-pen-to-square me-2"></i>Edit</a>
-                                <a href="#" class="btn btn-sm btn-outline-dark"><i
-                                        class="fa-regular fa-trash-can me-2"></i>Delete</a>
-                            </div>
+                                <div class="d-flex gap-3 justify-content-end">
+                                    <a href="#" class="btn btn-sm btn-outline-dark"><i
+                                            class="fa-regular fa-pen-to-square me-2"></i>Edit</a>
+                                    <a href="#" class="btn btn-sm btn-outline-dark"><i
+                                            class="fa-regular fa-trash-can me-2"></i>Delete</a>
+                                </div>
                             </td>
                         </tr>
                     @endforeach
