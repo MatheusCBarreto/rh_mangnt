@@ -27,4 +27,28 @@ class RhUserController extends Controller
 
         return view('colaborators.add-rh-user', ['departments' => $departments]);
     }
+
+    public function createRhColaborator(Request $request)
+    {
+
+        Auth::user()->can('admin') ?: abort(403, 'You do not have permission to access this page.');
+
+        // form validation
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|max:255|unique:users,email',
+            'select_department' => 'required|exists:departments,id',
+        ]);
+
+        // create new RH user
+        $user = new User();
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->role = 'RH';
+        $user->department_id = $request->select_department;
+        $user->permissions = '["RH"]';
+        $user->save();
+
+        return redirect()->route('colaborators.rh-users')->with('success', 'Colaborator created successfully.');
+    }
 }

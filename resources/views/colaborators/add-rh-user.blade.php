@@ -6,11 +6,11 @@
             <div class="row">
                 <div class="col-4">
 
-                    <h3>New Human Resources Colaborators</h3>
+                    <h3>New Human Resources Colaborator</h3>
 
                     <hr>
 
-                    <form action="{{ route('colaborators.rh-users.new-colaborator') }}" method="post">
+                    <form action="{{ route('colaborators.rh-users.create-colaborator') }}" method="post">
 
                         @csrf
 
@@ -31,12 +31,23 @@
                         </div>
 
                         <div class="mb-3">
-                            <label for="select_department" class="form-label">Department</label>
-                            <select name="department" id="department" class="form-select">
-                                @foreach ($departments as $department)
-                                    <option value="{{ $department->id }}">{{ $department->name }}</option>
-                                @endforeach
-                            </select>
+                            <div class="d-flex">
+                                <div class="flex-grow-1 pe-3">
+                                    <label for="select_department" class="form-label">Department</label>
+                                    <select name="department" id="department" class="form-select">
+                                        @foreach ($departments as $department)
+                                            <option value="{{ $department->id }}">{{ $department->name }}</option>
+                                        @endforeach
+                                    </select>
+                                    @error('select_department')
+                                        <div class="text-danger">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                                <div>
+                                    <a href="{{ route('departments.new-department') }}"
+                                        class="btn btn-outline-primary mt-4"><i class="fas fa-plus"></i></a>
+                                </div>
+                            </div>
                         </div>
 
                         <p class="mb-3">Profile: <strong>Human Resources</strong></p>
