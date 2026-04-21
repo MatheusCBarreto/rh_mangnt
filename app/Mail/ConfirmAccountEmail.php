@@ -21,7 +21,7 @@ class ConfirmAccountEmail extends Mailable
      */
     public function __construct($url)
     {
-        //
+        $this->url = $url;
     }
 
     /**

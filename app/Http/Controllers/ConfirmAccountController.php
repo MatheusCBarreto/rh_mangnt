@@ -6,9 +6,9 @@ use Illuminate\Http\Request;
 
 class ConfirmAccountController extends Controller
 {
-    public function confirmAccount($url)
+    public function confirmAccount($token)
     {
 
-        echo "Estou aqui " . $url;
+        echo "Estou aqui " . $token;
     }
 }
