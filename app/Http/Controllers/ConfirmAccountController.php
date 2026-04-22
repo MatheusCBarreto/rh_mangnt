@@ -2,13 +2,30 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class ConfirmAccountController extends Controller
 {
     public function confirmAccount($token)
     {
+        // check if token is valid
+        $user = User::where('confirmation_token', $token)->first();
 
-        echo "Estou aqui " . $token;
+        if (!$user) {
+            abort(403, 'Invalid confirmation token.');
+        }
+
+        return view('auth.confirm-account', ['user' => $user]);
+    }
+
+    public function confirmAccountSubmit(Request $request) {
+
+    // form validation
+    $request->validate([
+        'token' => 'required|string|size:60',
+        'password' => 'required|confirmed|min:8|max:16|regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).+$/',
+
+    ]);
     }
 }
