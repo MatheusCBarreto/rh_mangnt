@@ -47,7 +47,7 @@
                                     <a href="{{ route('colaborators.show-details', ['id' => $colaborator->id]) }}"
                                         class="btn btn-sm btn-outline-dark ms-3"><i
                                             class="fas fa-eye me-2"></i>Details</a>
-                                    <a href="#" class="btn btn-sm btn-outline-dark ms-3"><i
+                                    <a href="{{ route('colaborators.delete-colaborator', ['id' => $colaborator->id])}}" class="btn btn-sm btn-outline-dark ms-3"><i
                                             class="fa-regular fa-trash-can me-2"></i>Delete</a>
                                 </div>
                             </td>

@@ -32,4 +32,30 @@ class ColaboratorsController extends Controller
 
         return view('colaborators.show-details', ['colaborator' => $colaborators]);
     }
+
+    public function deleteColaborator($id)
+    {
+        Auth::user()->can('admin', 'rh') ?: abort(403, 'You do not have permission to access this page.');
+
+        if (Auth::user()->id == $id) {
+            return redirect()->route('home');
+        }
+
+        $colaborator = User::findOrFail($id);
+        return view('colaborators.delete-colaborator-confirm', ['colaborator' => $colaborator]);
+    }
+
+    public function deleteColaboratorConfirm($id)
+    {
+        Auth::user()->can('admin', 'rh') ?: abort(403, 'You do not have permission to access this page.');
+
+        if (Auth::user()->id == $id) {
+            return redirect()->route('home');
+        }
+
+        $colaborator = User::findOrFail($id);
+        $colaborator->delete();
+
+        return redirect()->route('colaborators.all-colaborators');
+    }
 }
