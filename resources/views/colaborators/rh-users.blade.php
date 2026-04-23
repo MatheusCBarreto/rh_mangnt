@@ -53,9 +53,17 @@
                                     <a href="{{ route('colaborators.rh-users.edit-colaborator', ['id' => $colaborator->id]) }}"
                                         class="btn btn-sm btn-outline-dark"><i
                                             class="fa-regular fa-pen-to-square me-2"></i>Edit</a>
-                                    <a href="{{ route('colaborators.rh-users.delete-colaborator', ['id' => $colaborator->id]) }}"
-                                        class="btn btn-sm btn-outline-dark"><i
-                                            class="fa-regular fa-trash-can me-2"></i>Delete</a>
+
+                                    @if (empty($colaborator->deleted_at))
+                                        <a href="{{ route('colaborators.rh-users.delete-colaborator', ['id' => $colaborator->id]) }}"
+                                            class="btn btn-sm btn-outline-dark"><i
+                                                class="fa-regular fa-trash-can me-2"></i>Delete</a>
+                                    @else
+                                        <a href="{{ route('colaborators.rh-users.restore-colaborator', ['id' => $colaborator->id]) }}"
+                                            class="btn btn-sm btn-outline-dark"><i
+                                                class="fa-solid fa-trash-arrow-up me-2"></i>Restore</a>
+                                    @endif
+
                                 </div>
                             </td>
                         </tr>

@@ -16,8 +16,7 @@ class RhUserController extends Controller
     {
         Auth::user()->can('admin') ?: abort(403, 'You do not have permission to access this page.');
 
-        // $colaborators = User::where('role', 'rh')->get();
-        $colaborators = User::with('detail')->where('role', 'rh')->get();
+        $colaborators = User::withTrashed()->with('detail')->where('role', 'rh')->get();
 
         return view('colaborators.rh-users', ['colaborators' => $colaborators]);
     }
@@ -128,6 +127,18 @@ class RhUserController extends Controller
 
         $colaborator = User::findOrFail($id);
         $colaborator->delete();
+
+        return redirect()->route('colaborators.rh-users');
+    }
+
+    public function restoreRhColaborator($id)
+    {
+        Auth::user()->can('admin') ?: abort(403, 'You do not have permission to access this page.');
+
+
+        $colaborator = User::withTrashed()->where('role', 'rh')->findOrFail($id);
+
+        $colaborator->restore();
 
         return redirect()->route('colaborators.rh-users');
     }
