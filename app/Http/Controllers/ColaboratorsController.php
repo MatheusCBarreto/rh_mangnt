@@ -30,6 +30,11 @@ class ColaboratorsController extends Controller
 
         $colaborators = User::with('detail', 'department')->where('id', $id)->first();
 
+        // check if colaborator exists
+        if (!$colaborators) {
+            abort(404, 'Colaborator not found.');
+        }
+
         return view('colaborators.show-details', ['colaborator' => $colaborators]);
     }
 

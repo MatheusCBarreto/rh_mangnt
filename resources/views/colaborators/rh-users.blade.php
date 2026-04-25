@@ -50,11 +50,11 @@
 
                             <td>
                                 <div class="d-flex gap-3 justify-content-end">
-                                    <a href="{{ route('colaborators.rh-users.edit-colaborator', ['id' => $colaborator->id]) }}"
-                                        class="btn btn-sm btn-outline-dark"><i
-                                            class="fa-regular fa-pen-to-square me-2"></i>Edit</a>
-
                                     @if (empty($colaborator->deleted_at))
+                                        <a href="{{ route('colaborators.rh-users.edit-colaborator', ['id' => $colaborator->id]) }}"
+                                            class="btn btn-sm btn-outline-dark"><i
+                                                class="fa-regular fa-pen-to-square me-2"></i>Edit</a>
+
                                         <a href="{{ route('colaborators.rh-users.delete-colaborator', ['id' => $colaborator->id]) }}"
                                             class="btn btn-sm btn-outline-dark"><i
                                                 class="fa-regular fa-trash-can me-2"></i>Delete</a>
