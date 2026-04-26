@@ -4,6 +4,7 @@ use App\Http\Controllers\ColaboratorsController;
 use App\Http\Controllers\ConfirmAccountController;
 use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\RhManagementController;
 use App\Http\Controllers\RhUserController;
 use Illuminate\Support\Facades\Route;
 
@@ -17,7 +18,16 @@ Route::middleware('guest')->group(function () {
 Route::middleware('auth')->group(function () {
 
     Route::redirect('/', '/home');
-    Route::view('/home', 'home')->name('home');
+    Route::get('/home', function () {
+        // check if user is admin
+        if (auth()->user()->role === 'admin') {
+            die('vai para a página inicial do admin');
+        } elseif (auth()->user()->role === 'rh') {
+            return redirect()->route('colaborators.rh-management.home');
+        } else {
+            die('vai para a página inicial do colaborador normal');
+        }
+    });
 
     // user profile page
     Route::get('/user/profile', [ProfileController::class, 'index'])->name('user.profile');
@@ -42,6 +52,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/rh-users/delete-colaborator/{id}', [RhUserController::class, 'deleteRhColaborator'])->name('colaborators.rh-users.delete-colaborator');
     Route::get('/rh-users/delete-colaborator-confirm/{id}', [RhUserController::class, 'deleteRhColaboratorConfirm'])->name('colaborators.rh-users.delete-colaborator-confirm');
     Route::get('/rh-users/restore/{id}', [RhUserController::class, 'restoreRhColaborator'])->name('colaborators.rh-users.restore-colaborator');
+
+    Route::get('/rh-users/management/home', [RhManagementController::class, 'home'])->name('colaborators.rh-management.home');
 
     // admin colaborators list
     Route::get('/colaborators', [ColaboratorsController::class, 'index'])->name('colaborators.all-colaborators');
