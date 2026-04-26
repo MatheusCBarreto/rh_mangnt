@@ -27,7 +27,7 @@ Route::middleware('auth')->group(function () {
         } else {
             die('vai para a página inicial do colaborador normal');
         }
-    });
+    })->name('home');
 
     // user profile page
     Route::get('/user/profile', [ProfileController::class, 'index'])->name('user.profile');

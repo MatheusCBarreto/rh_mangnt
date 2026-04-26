@@ -29,7 +29,7 @@ class AppServiceProvider extends ServiceProvider
             return auth()->user()->role === 'admin';
         });
 
-
+        // Define a gate to check if the user is an admin
         Gate::define('rh', function () {
             return auth()->user()->role === 'rh';
         });
