@@ -17,7 +17,7 @@ Route::middleware('guest')->group(function () {
 
 Route::middleware('auth')->group(function () {
 
-    Route::redirect('/', '/home');
+    Route::redirect('/', 'home');
     Route::get('/home', function () {
         // check if user is admin
         if (auth()->user()->role === 'admin') {
@@ -54,6 +54,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/rh-users/restore/{id}', [RhUserController::class, 'restoreRhColaborator'])->name('colaborators.rh-users.restore-colaborator');
 
     Route::get('/rh-users/management/home', [RhManagementController::class, 'home'])->name('colaborators.rh-management.home');
+    Route::get('/rh-users/management/new-colaborator', [RhManagementController::class, 'newColaborator'])->name('colaborators.rh-management.new-colaborator');
 
     // admin colaborators list
     Route::get('/colaborators', [ColaboratorsController::class, 'index'])->name('colaborators.all-colaborators');
