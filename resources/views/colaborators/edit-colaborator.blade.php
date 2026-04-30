@@ -6,7 +6,7 @@
 
         <hr>
 
-        <form action="#" method="post">
+        <form action="{{ route('colaborators.rh-management.update-colaborator') }}" method="post">
 
             @csrf
 
