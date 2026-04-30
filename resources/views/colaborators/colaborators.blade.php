@@ -58,7 +58,8 @@
                                             class="btn btn-sm btn-outline-dark ms-3"><i
                                                 class="fa-regular fa-edit me-2"></i>Edit</a>
 
-                                        <a href="#" class="btn btn-sm btn-outline-dark ms-3"><i
+                                        <a href="{{ route('colaborators.rh-management.delete-colaborator', ['id' => $colaborator->id]) }}"
+                                            class="btn btn-sm btn-outline-dark ms-3"><i
                                                 class="fa-regular fa-trash-can me-2"></i>Delete</a>
 
                                         <a href="{{ route('colaborators.rh-management.show-details', ['id' => $colaborator->id]) }}"

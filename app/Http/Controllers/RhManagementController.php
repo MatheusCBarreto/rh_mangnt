@@ -134,4 +134,25 @@ class RhManagementController extends Controller
 
         return view('colaborators.show-details', ['colaborator' => $colaborator]);
     }
+
+    public function deleteColaborator($id)
+    {
+        Auth::user()->can('rh') ?: abort(403, 'You do not have permission to access this page.');
+
+        $colaborator = User::findOrFail($id);
+
+        // display confirmation page
+        return view('colaborators.delete-colaborator', ['colaborator' => $colaborator]);
+    }
+
+    public function deleteColaboratorConfirm($id)
+    {
+        Auth::user()->can('rh') ?: abort(403, 'You do not have permission to access this page.');
+
+        $colaborator = User::findOrFail($id);
+
+        $colaborator->delete();
+
+        return redirect()->route('colaborators.rh-management.home');
+    }
 }

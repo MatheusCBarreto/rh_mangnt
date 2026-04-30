@@ -61,6 +61,9 @@ Route::middleware('auth')->group(function () {
     Route::post('/rh-users/management/update-colaborator/', [RhManagementController::class, 'updateColaborator'])->name('colaborators.rh-management.update-colaborator');
     Route::get('/rh-users/management/details/{id}', [RhManagementController::class, 'showDetails'])->name('colaborators.rh-management.show-details');
 
+    Route::get('/rh-users/management/delete/{id}', [RhManagementController::class, 'deleteColaborator'])->name('colaborators.rh-management.delete-colaborator');
+    Route::get('/rh-users/management/delete-confirm/{id}', [RhManagementController::class, 'deleteColaboratorConfirm'])->name('colaborators.rh-management.delete-colaborator-confirm');
+
     // admin colaborators list
     Route::get('/colaborators', [ColaboratorsController::class, 'index'])->name('colaborators.all-colaborators');
     Route::get('/colaborators/details/{id}', [ColaboratorsController::class, 'showDetails'])->name('colaborators.show-details');
