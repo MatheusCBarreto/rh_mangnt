@@ -26,7 +26,7 @@ Route::middleware('auth')->group(function () {
         } elseif (auth()->user()->role === 'rh') {
             return redirect()->route('colaborators.rh-management.home');
         } else {
-            die('vai para a página inicial do colaborador normal');
+            return redirect('colaborator');
         }
     })->name('home');
 
@@ -76,4 +76,7 @@ Route::middleware('auth')->group(function () {
 
     // admin routes
     Route::get('/admin/home', [AdminController::class, 'home'])->name('admin.home');
+
+    // colaborator routes
+    Route::get('/colaborator', [ColaboratorsController::class, 'home'])->name('colaborator');
 });
