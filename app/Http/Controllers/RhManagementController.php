@@ -150,8 +150,17 @@ class RhManagementController extends Controller
         Auth::user()->can('rh') ?: abort(403, 'You do not have permission to access this page.');
 
         $colaborator = User::findOrFail($id);
-
         $colaborator->delete();
+
+        return redirect()->route('colaborators.rh-management.home');
+    }
+
+    public function restoreColaborator($id)
+    {
+        Auth::user()->can('rh') ?: abort(403, 'You do not have permission to access this page.');
+
+        $colaborator = User::withTrashed()->findOrFail($id);
+        $colaborator->restore();
 
         return redirect()->route('colaborators.rh-management.home');
     }
