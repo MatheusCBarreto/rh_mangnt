@@ -3,5 +3,16 @@
         <h3>Home</h3>
         <hr>
 
+        <div class="d-flex">
+            <x-info-title-value item-title="Total colaborators" :item-value="$data['total_colaborators']" />
+            <x-info-title-value item-title="Total colaborators deleted" :item-value="$data['total_colaborators_deleted']" />
+            <x-info-title-value item-title="Total salary" :item-value="$data['total_salary']" />
+        </div>
+
+        <div class="d-flex">
+            <x-info-title-collection item-title="Colaborators by department" :collection="$data['total_colaborators_per_department']" />
+            <x-info-title-collection item-title="Total salary by department" :collection="$data['total_salary_by_department']" />
+        </div>
+
     </div>
 </x-layout-app>
