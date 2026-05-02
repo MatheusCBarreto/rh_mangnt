@@ -27,7 +27,7 @@
                         @endforeach
                     </ul>
 
-                    <p>Department: <strong>{{ $colaborator->department->name }}</strong></p>
+                    <p>Department: <strong>{{ $colaborator->department->name ?? 'Without department' }}</strong></p>
                     <p>Active:
 
                         @if ($colaborator->email_verified_at === null)
