@@ -14,10 +14,10 @@
                 <x-profile-user-change-password />
 
                 {{-- componente name - email --}}
-                <x-profile-user-change-data />
+                <x-profile-user-change-data :colaborator="$colaborator" />
 
                 {{-- componente endereço --}}
-                <x-profile-user-change-address />
+                <x-profile-user-change-address :colaborator="$colaborator" />
 
             </div>
         </div>
