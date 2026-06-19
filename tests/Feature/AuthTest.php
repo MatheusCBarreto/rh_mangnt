@@ -39,6 +39,44 @@ it('test if an admin user can login with success', function () {
     expect($result->assertRedirect('/home'));
 });
 
+it('test if an rh user can loggin with success', function () {
+
+    // criar o usuário rh
+    addRhUser();
+
+    // login o rh user
+    $result = $this->post('/login', [
+        'email' => 'rh1@rhmangnt.com',
+        'password' => 'Aa123456'
+    ]);
+
+    // verifica se o user rh fez login com sucesso
+    expect($result->status())->toBe(302);
+    expect($result->assertRedirect('/home'));
+
+    // verifica se o user rh consegue acesso à página exclusiva
+    expect($this->get('/rh-users/management/home')->status())->toBe(200);
+});
+
+it('test if an colaborator user can loggin with success', function () {
+
+    // criar o usuário colaborador
+    addColaboratorUser();
+
+    // login o rh user
+    $result = $this->post('/login', [
+        'email' => 'colaborador@rhmangnt.com',
+        'password' => 'Aa123456'
+    ]);
+
+    // verifica se o user rh fez login com sucesso
+    expect($result->status())->toBe(302);
+    expect($result->assertRedirect('/home'));
+
+    // verifica se o calaborador NÃO consegue chegar a uma rota exclusiva do admin
+    expect($this->get('/departments')->status())->not()->toBe(200);
+});
+
 function addAdminUser()
 {
     // create admin user 
@@ -50,6 +88,38 @@ function addAdminUser()
         'password' => bcrypt('Aa123456'),
         'role' => 'admin',
         'permissions' => '["admin"]',
+        'created_at' => now(),
+        'updated_at' => now(),
+    ]);
+}
+
+function addRhUser()
+{
+    // create rh user 
+    User::insert([
+        'department_id' => 2,   // Administração
+        'name' => 'Colaborador de RH',
+        'email' => 'rh1@rhmangnt.com',
+        'email_verified_at' => now(),
+        'password' => bcrypt('Aa123456'),
+        'role' => 'rh',
+        'permissions' => '["rh"]',
+        'created_at' => now(),
+        'updated_at' => now(),
+    ]);
+}
+
+function addColaboratorUser()
+{
+    // create admin user 
+    User::insert([
+        'department_id' => 3,   // Administração
+        'name' => 'Colaborador normal',
+        'email' => 'colaborador@rhmangnt.com',
+        'email_verified_at' => now(),
+        'password' => bcrypt('Aa123456'),
+        'role' => 'colaborator',
+        'permissions' => '["colaborator"]',
         'created_at' => now(),
         'updated_at' => now(),
     ]);

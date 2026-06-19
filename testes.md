@@ -4,7 +4,7 @@
 
 - Testar a rota inicial como sendo a página de login -> FEITO
 - Testar a rota de recuperação de senha --> FEITO
-- Testar o processo de login com sucesso para o perfil de admin
+- Testar o processo de login com sucesso para o perfil de admin --> FEITO
 - Testar o processo de login com sucesso para o perfil de rh
 - Testar o processo de login com sucesso para o perfil colaborador
 
