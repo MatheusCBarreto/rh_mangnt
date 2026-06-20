@@ -11,7 +11,7 @@
 - Testar a inserção de um novo user rh com o perfil admin --> FEITO
 - Testar a inserção de um novo colaborador com o perfil rh --> FEITO
 
-- Testar se um admin, após login com sucesso consegue ver a página de colaboradores rh
-- Testar se, sem um usuário logado, é possível acessar à página home
-- Testar se, com o usuário logado, é possível acessar a página de login
-- Testar se, estando logado, é possível acessar a página de recuperação de senha
+- Testar se um admin, após login com sucesso consegue ver a página de colaboradores rh --> FEITO
+- Testar se, sem um usuário logado, é possível acessar à página home --> FEITO
+- Testar se, com o usuário logado, é possível acessar a página de login --> FEITO
+- Testar se, estando logado, é possível acessar a página de recuperação de senha --> FEITO
