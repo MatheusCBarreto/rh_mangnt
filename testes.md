@@ -9,7 +9,7 @@
 - Testar o processo de login com sucesso para o perfil colaborador --> FEITO
 
 - Testar a inserção de um novo user rh com o perfil admin --> FEITO
-- Testar a inserção de um novo colaborador com o perfil rh
+- Testar a inserção de um novo colaborador com o perfil rh --> FEITO
 
 - Testar se um admin, após login com sucesso consegue ver a página de colaboradores rh
 - Testar se, sem um usuário logado, é possível acessar à página home
