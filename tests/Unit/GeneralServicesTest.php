@@ -28,3 +28,27 @@ it('tests if the salary with bonus is calculated correctly', function () {
 
     expect($result)->toBe(2025);
 });
+
+it('tests if the json fake data is created correctly', function () {
+
+    $result = GeneralServices::fakeDataInJson();
+
+    $clients = json_decode($result, true);
+
+    expect(count($clients))->toBeGreaterThanOrEqual(1);
+    expect($clients[0])->toHaveKeys(['name', 'email', 'phone', 'address']);
+});
+
+it('tests if the complex data is created correctly', function () {
+    $result = GeneralServices::jsonComplexData();
+
+    $data = json_decode($result, true);
+    expect($data)->toHaveKeys(['name', 'email', 'moradas', 'telefones']);
+    expect($data['moradas'])->toBeArray();
+    expect($data['moradas'][0])->toHaveKeys(['rua', 'cidade', 'pais']);
+    expect($data['telefones'])->toHaveKeys(['phones', 'mobiles']);
+    expect($data['telefones']['phones'])->toBeArray();
+    expect($data['telefones']['mobiles'])->toBeArray();
+
+
+});
