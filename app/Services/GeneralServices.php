@@ -11,7 +11,7 @@ class GeneralServices
 
   public static function createPhraseWithNameAndSalary($name, $salary)
   {
-    return "O salário do(a) $name é 'R$'$salary";
+    return "O salário do(a) $name é $salary reais";
   }
 
   public static function getSalaryWithBonus($salary, $bonus)
